@@ -2,6 +2,6 @@
 A place to document Linux findings
 
 ## My PC Specs
-- 7900XTX
-- i7 12700k
-- Linux Mint
+- AMD Radeon RX 7900XTX
+- Intel Core i7-12700K
+- Linux Mint Cinnamon
