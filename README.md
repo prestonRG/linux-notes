@@ -20,3 +20,6 @@ A place to document Linux findings
 
 ### System
 - [AMD RDNA3 GPU Stability](system/amd-gpu-stability.md)
+
+## Note
+AI tools are used to help me with research and documentation. I have thoroughly reviewed and tested all findings on my own device before documenting them, unless stated otherwise.
