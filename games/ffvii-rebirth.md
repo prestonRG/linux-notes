@@ -12,6 +12,7 @@ UET and Fantasy Optimizer did not seem to have any noticable effect on my game, 
 
 ## Current Config
 I believe that the true fix was adding one of these variables to UET's Engine.ini file:
+```
 [/Script/Engine.StreamingSettings]
 s.EventDrivenLoaderEnabled=1
 
@@ -20,11 +21,12 @@ r.Streaming.MaxTempMemoryAllowed=256
 r.MipMapLODBias=-1
 foliage.LODDistanceScale=0.5
 r.SkeletalMeshLODBias=1
+```
 
 I have not done further testing, so I cannot confirm which variable is responsible.
 
 In my current config:
-- My launch options are WINEDLLOVERRIDES="dxgi=n,b" RADV_PERFTEST=nggc VKD3D_CONFIG=pipeline_library_app_cache mangohud gamemoderun %command% -nodirectstorage.
+- My launch options are `WINEDLLOVERRIDES="dxgi=n,b" RADV_PERFTEST=nggc VKD3D_CONFIG=pipeline_library_app_cache mangohud gamemoderun %command% -nodirectstorage`
 - I have FFVIIHook, Ultimate Engine Tweaks (with added variables in Engine.ini), and Fantasy Optimizer installed.
 - My Proton version is Valve's Proton 10 Stable.
 - Background Model Detail is set to low in-game.

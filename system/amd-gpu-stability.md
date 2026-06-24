@@ -25,7 +25,7 @@ I looked all over for fixes. Many sources gave me ideas, but none fixed the issu
 - amdgpu.tmz=0
 - amdgpu.sg_display=0"
 
-Should look like this: GRUB_CMDLINE_LINUX_DEFAULT="amdgpu.gfxoff=0 amdgpu.runpm=0 amdgpu.gpu_recovery=1 amdgpu.tmz=0 amdgpu.sg_display=0"
+Should look like this: `GRUB_CMDLINE_LINUX_DEFAULT="amdgpu.gfxoff=0 amdgpu.runpm=0 amdgpu.gpu_recovery=1 amdgpu.tmz=0 amdgpu.sg_display=0"`
 
 2. Run sudo update-grub after to apply
 
