@@ -3,7 +3,7 @@
 ## Problem
 When moving the camera, my GPU usage would spike to 100%, resulting in constant freezing, making the game unplayable.
 
-## Troubleshooting
+## Testing
 I installed various mods, lowered Background Model Detail in the game's settings, and changed the game's launch options.
 Setting Background Model Detail to low in-game seemed to have the most obvious effect, but did not fully fix the issue on its own.
 OptiScaler had no effect.
@@ -34,9 +34,9 @@ With my current config, I am seeing GPU usage up to 85% rather than 100%. Freeze
 All of this has been done within the starting location Nibelheim.
 
 ## Resources
-https://github.com/Zenardi/ff7rebirth-pc-optimization
-https://www.nexusmods.com/finalfantasy7rebirth/mods/4
-https://www.nexusmods.com/finalfantasy7rebirth/mods/3
-https://www.nexusmods.com/finalfantasy7rebirth/mods/1
-https://www.nexusmods.com/finalfantasy7rebirth/mods/15
-https://www.nexusmods.com/finalfantasy7rebirth/mods/2107
+- [FF7Rebirth PC Optimization Repo](https://github.com/Zenardi/ff7rebirth-pc-optimization)
+- [FFVIIHook](https://www.nexusmods.com/finalfantasy7rebirth/mods/4)
+- [Ultimate Engine Tweaks (UET)](https://www.nexusmods.com/finalfantasy7rebirth/mods/3)
+- [Fantasy Optimizer](https://www.nexusmods.com/finalfantasy7rebirth/mods/1)
+- [FFVII DLSS4-FSR4-XeSS-FrameGen and AVX2 Emulation](https://www.nexusmods.com/finalfantasy7rebirth/mods/15)
+- [FF7 Rebirth DX12 Async Compile](https://www.nexusmods.com/finalfantasy7rebirth/mods/2107)
