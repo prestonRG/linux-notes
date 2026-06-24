@@ -6,6 +6,12 @@ A place to document Linux findings
 - Intel Core i7-12700K
 - Linux Mint Cinnamon
 
+## Gaming Info
+- Gaming on Linux works very well in a majority of cases thanks to Valve's work on Proton. For the most part, the only reason a game won't work is because it uses kernel level anti cheat (KLAC). To see if a game will work or not, due to KLAC, use [Are We Anti-Cheat Yet?](https://areweanticheatyet.com/)
+- For increased stability, I would highly recommend [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom/releases), which adds additional fixes on top of Valve's proton. Simply install your chosen version into ~/.steam/debian-installation/compatibilitytools.d/ and restart steam. Proton-GE should now be available for games under Properties > Compatibility > "Force the use of a specific Steam Play compatibility tool"
+- If you are unsure about something, [ProtonDB](https://www.protondb.com/) is the best resource I know of to check.
+- The only two resources I use to play games are [Steam](https://store.steampowered.com/) and [Heroic Games Launcher](https://heroicgameslauncher.com/).
+
 ## Pages
 
 ### Games
