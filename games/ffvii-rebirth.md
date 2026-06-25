@@ -4,38 +4,11 @@
 From my research, the problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
 
 ## Fixes Applied
-### Prerequisites
+### Mods
 - [FFVIIHook](https://www.nexusmods.com/finalfantasy7rebirth/mods/4): Allows editing of Engine.ini.
 - [Ultimate Engine Tweaks (UET)](https://www.nexusmods.com/finalfantasy7rebirth/mods/3): A preset for Engine.ini that provides many performance improvements on its own.
 
 Engine.ini location: `~/.steam/steam/steamapps/compatdata/2909400/pfx/drive_c/users/steamuser/Documents/My Games/FINAL FANTASY VII REBIRTH/Saved/Config/WindowsNoEditor/Engine.ini`
-
-
-### Changes made to UET's Engine.ini
-Custom changes made to Engine.ini:
-```
-[/Script/Engine.StreamingSettings]
-s.EventDrivenLoaderEnabled=1 ; Redundant as UE4 supposedly already does this.
-s.LevelStreamingActorsUpdateTimeLimit=10.0
-
-[ConsoleVariables]
-r.Streaming.PoolSize=12288
-r.Streaming.MassiveEnvironmentPoolSizeMB=10240
-r.Streaming.MaxTempMemoryAllowed=1024
-foliage.LODDistanceScale=1
-r.MassiveEnvironment.CoverageLODScale=1
-r.Streaming.MaxNumTexturesToStreamPerFrame=200
-r.RenderTargetPoolMin=6144
-```
-- Removed PoolSizeVRAMPercentage=60 and replaced it with r.Streaming.PoolSize=12288.
-- Changed s.AsyncLoadingTimeLimit=3.0 to 10 in both locations.
-- Changed r.IO.UseDirectStorage=1 to r.IO.UseDirectStorage=0
-- Changed r.Streaming.LimitPoolSizeToVRAM=1 to r.Streaming.LimitPoolSizeToVRAM=0
-
-I would recommend adding these to the bottom of their respective sections, but it should be fine either way.
-
-#### IMPORTANT
-If you make any changes to Engine.ini, be sure to make it read-only before launching the game. The game WILL overwrite the file.
 
 ### Steam Config
 #### Launch Options
