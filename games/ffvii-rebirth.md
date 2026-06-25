@@ -12,11 +12,17 @@ Engine.ini location: `~/.steam/steam/steamapps/compatdata/2909400/pfx/drive_c/us
 
 ### Steam Config
 #### Launch Options
-`WINEDLLOVERRIDES="dxgi=n,b" RADV_PERFTEST=nggc VKD3D_CONFIG=pipeline_library_app_cache mangohud gamemoderun %command% -nodirectstorage`
-- `WINEDLLOVERRIDES="dxgi=n,b` is for the dll that ships with FFVIIHook. By default, it is xinput1_3.dll; but I renamed it to dxgi.dll to remove the conflict with controller input.
+`WINEDLLOVERRIDES="d3d9=n,b;dsound=n,b" RADV_PERFTEST=nggc,gpl VKD3D_CONFIG=pipeline_library_app_cache,shader_cache_sync taskset -c 0-15 mangohud gamemoderun %command%`
+- `WINEDLLOVERRIDES="d3d9=n,b` is for the dll that ships with FFVIIHook. By default, it is xinput1_3.dll; but I renamed it to d3d9.dll to remove the conflict with controller input.
+- `WINEDLLOVERRIDES="dsound=n,b` is needed for FF7RebirthFix.
 - `RADV_PERFTEST=nggc` can improve AMD GPU performance in some titles.
+- `RADV_PERFTEST=gpl`
 - `VKD3D_CONFIG=pipeline_library_app_cache` enables the persistent caching of compiled shader pipelines.
-- `-nodirectstorage` bypasses DirectStorage and allows Proton to handle asset streaming. This is done because the game ships with an outdated DirectStorage 1.1.1 DLL.
+- `VKD3D_CONFIG=shader_cache_sync`
+- `taskset -c 0-15` to prevent the game from using the i7-12700K's, slower, E-cores.
+- `mangohud` for performance monitoring.
+- `gamemoderun` for general performance improvements.
+- ~~`-nodirectstorage` bypasses DirectStorage and allows Proton to handle asset streaming. This is done because the game ships with an outdated DirectStorage 1.1.1 DLL.~~ Doesn't seem to help and may even be detrimental. I believe SQUARE ENIX released a patch soon after the PC release to address this issue.
 
 #### Proton
 Proton 10.0-4 (Stable)
@@ -24,14 +30,28 @@ Proton 10.0-4 (Stable)
 ### In-Game Settings
 If you are still having issues, set "Background Model Detail" to low. This will introduce severe pop-in, but the game should run much smoother. Capping the game to 60fps (or even 30 if you can stomach it) should help further as the game will have more time to render each frame.
 
-## Result
-With my current config, I am seeing GPU usage up to 85% rather than 100%. Freezes/stuttering has seemingly stopped, though my testing is not yet thorough.
-~~All of this has been done within the starting location Nibelheim.~~ After playing through the first chapter of the game, I can say that the game is still heavily bound by the Background Model Detail setting. for the smoothest experience, I have to set it to low, though this causes some of the worst pop-in i have ever seen in a game.
+## Testing
+I am still testing different configurations with several LOD mods. Since the lag seems to be occuring when pop-in occurs, I am trying to see if I can effectively eliminate pop-in, therefore eliminating stutter.
 
 ## Resources
-- [FF7Rebirth PC Optimization Repo](https://github.com/Zenardi/ff7rebirth-pc-optimization)
+### Mods
+#### Important
 - [FFVIIHook](https://www.nexusmods.com/finalfantasy7rebirth/mods/4)
+- [FF7RebirthFix](https://www.nexusmods.com/finalfantasy7rebirth/mods/22)
+
+#### Performance
 - [Ultimate Engine Tweaks (UET)](https://www.nexusmods.com/finalfantasy7rebirth/mods/3)
 - [Fantasy Optimizer](https://www.nexusmods.com/finalfantasy7rebirth/mods/1)
+
+#### LOD
+- [LOD Fix - Optimized Clarity](https://www.nexusmods.com/finalfantasy7rebirth/mods/38)
+- [Ultimate Graphics Quality Engine Best LOD FPS and Foliage Fix](https://www.nexusmods.com/finalfantasy7rebirth/mods/397)
+- [7 Rebirth Engine Tweaks](https://www.nexusmods.com/finalfantasy7rebirth/mods/16)
+
+#### Other
 - [FFVII DLSS4-FSR4-XeSS-FrameGen and AVX2 Emulation](https://www.nexusmods.com/finalfantasy7rebirth/mods/15)
 - [FF7 Rebirth DX12 Async Compile](https://www.nexusmods.com/finalfantasy7rebirth/mods/2107)
+
+### Info
+- [FF7Rebirth PC Optimization Repo](https://github.com/Zenardi/ff7rebirth-pc-optimization)
+- [FF7-Rebirth-Optimized-Clarity](https://github.com/marcValdz/FF7-Rebirth-Optimized-Clarity)
