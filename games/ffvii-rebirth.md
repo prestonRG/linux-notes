@@ -1,4 +1,4 @@
-# FINAL FANTASY VII REBIRTH - Linux Performance Guide
+# FINAL FANTASY VII REBIRTH - Linux Stutter
 
 ## Problem
 The problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
