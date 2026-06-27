@@ -1,11 +1,5 @@
 # FINAL FANTASY VII REBIRTH - Linux Performance Guide
 
-## Game Version
-1.0.0.5
-
-## Proton
-GE-Proton10-34
-
 ## Problem
 The problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
 
@@ -58,7 +52,14 @@ If you are still having issues, set "Background Model Detail" to low. This will 
 ## Final Thoughts
 I have spent more time trying to troubleshoot this game than I would like to admit. At this point, I believe that the problem is pretty far removed from what I am currently capable of. I would encourage anyone reading this to try these fixes, and to also experiment with the various mods out there for this game. I have tried just about every one of them, but with no success. The issue isn't a performance problem, so while many mods improve performance, they do not address what is happening here. I believe the solution to this problem would lie in an update from SQUARE ENIX or possibly a more mature VKD3D.
 
-## Resources
+## Appendix
+### Game Version
+1.0.0.5
+
+### Proton
+GE-Proton10-34
+
+### Links
 - [FF7Rebirth PC Optimization Repo](https://github.com/Zenardi/ff7rebirth-pc-optimization)
 - [FF7-Rebirth-Optimized-Clarity](https://github.com/marcValdz/FF7-Rebirth-Optimized-Clarity)
 - [VKD3D-Proton Bug Report](https://github.com/HansKristian-Work/vkd3d-proton/issues/2918)
