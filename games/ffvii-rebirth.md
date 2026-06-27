@@ -1,12 +1,10 @@
 # FINAL FANTASY VII REBIRTH - Linux Performance Guide
 
-## System Info
-- **GPU**: AMD Radeon RX 7900 XTX
-- **CPU**: Intel Core i7-12700K
-- **OS**: Linux Mint 22.2 Cinnamon
-- **Kernel**: 6.17.0-35-generic
-- **Mesa**: 26.1.1 (Kisak PPA)
-- **Game Version**: 1.0.0.5
+## Game Version
+1.0.0.5
+
+## Proton
+GE-Proton10-34
 
 ## Problem
 The problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
@@ -53,9 +51,6 @@ With this fix, the cache file is allowed to grow beyond 3MB, up to 459MB in my c
 - `mangohud` for performance monitoring.
 - `gamemoderun` for general performance improvements.
 - `-nodirectstorage` bypasses DirectStorage and allows Proton to handle asset streaming. ~~This is done because the game ships with an outdated DirectStorage 1.1.1 DLL.~~ SQUARE ENIX apparently updated the DirectStorage version soon after the game's launch on PC, but it seems that Proton still handles this better without DirectStorage.
-
-#### Proton
-GE-Proton10-34
 
 ### In-Game Settings
 If you are still having issues, set "Background Model Detail" to low. This will introduce severe pop-in, but the game should run much smoother. I have this setting on Medium. Capping the game to 60fps (or even 30 if you can stomach it) should help further as the game will have more time to render each frame.
