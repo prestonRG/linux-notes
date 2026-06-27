@@ -8,12 +8,8 @@
 - **Mesa:** 26.1.1 (Kisak PPA)
 - **Game Version:** 1.0.0.5
 
----
-
 ## Problem
 The problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
-
----
 
 ## VKD3D Pipeline Mismatch
 FFVII Rebirth stores compiled shader pipelines in the file `~/.steam/steam/steamapps/compatdata/2909400/pfx/drive_c/users/steamuser/Documents/My Games/FINAL FANTASY VII REBIRTH/Saved/D3DDriverByteCodeBlob_V4098_D29772_S0_R0.ushaderprecache`
@@ -37,8 +33,6 @@ Pipeline "EB9363C19C999E87" does not exist.
 ```
  
 This is the same bug reported in this [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton/issues/2918) bug report for Wuthering Waves.
-
----
 
 ## Fixes Applied
 Add `pipeline_library_ignore_mismatch_driver` to your `VKD3D_CONFIG` launch option. This tells VKD3D to ignore the driver version mismatch instead of nuking the cache, allowing pipeline objects to actually accumulate between sessions.
@@ -66,12 +60,8 @@ GE-Proton10-34
 ### In-Game Settings
 If you are still having issues, set "Background Model Detail" to low. This will introduce severe pop-in, but the game should run much smoother. I have this setting on Medium. Capping the game to 60fps (or even 30 if you can stomach it) should help further as the game will have more time to render each frame.
 
----
-
 ## Final Thoughts
 I have spent more time trying to troubleshoot this game than I would like to admit. At this point, I believe that the problem is pretty far removed from what I am currently capable of. I would encourage anyone reading this to try these fixes, and to also experiment with the various mods out there for this game. I have tried just about every one of them, but with no success. The issue isn't a performance problem, so while many mods improve performance, they do not address what is happening here. I believe the solution to this problem would lie in an update from SQUARE ENIX or possibly a more mature VKD3D.
-
----
 
 ## Resources
 - [FF7Rebirth PC Optimization Repo](https://github.com/Zenardi/ff7rebirth-pc-optimization)
