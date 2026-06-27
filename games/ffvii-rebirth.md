@@ -1,57 +1,79 @@
-# FINAL FANTASY VII REBIRTH - Performance Optimization
+# FINAL FANTASY VII REBIRTH - Linux Performance Guide
+
+## System Info
+- **GPU:** AMD Radeon RX 7900 XTX
+- **CPU:** Intel Core i7-12700K
+- **OS:** Linux Mint 22.2 Cinnamon
+- **Kernel:** 6.17.0-35-generic
+- **Mesa:** 26.1.1 (Kisak PPA)
+- **Game Version:** 1.0.0.5
+
+---
 
 ## Problem
-From my research, the problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
+The problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
+
+---
+
+## VKD3D Pipeline Mismatch
+FFVII Rebirth stores compiled shader pipelines in the file `~/.steam/steam/steamapps/compatdata/2909400/pfx/drive_c/users/steamuser/Documents/My Games/FINAL FANTASY VII REBIRTH/Saved/D3DDriverByteCodeBlob_V4098_D29772_S0_R0.ushaderprecache`
+ 
+Under current VKD3D-Proton, this file is created at only 3MB, which is incorrect.
+ 
+This can be confirmed with the following steps:
+ 
+1. Delete `D3DDriverByteCodeBlob_V4098_D29772_S0_R0.ushaderprecache`.
+2. Add `PROTON_LOG=1 VKD3D_CONFIG=pipeline_library_log %command%` to the game's launch options.
+3. Open the game and allow it to compile shaders.
+4. Close the game and check the logs.
+ 
+The log will show:
+ 
+```
+Write cache is invalid (hr #887e0001), nuking it.
+Cannot load existing on-disk cache due to driver version mismatch.
+Loading stream pipeline library (3942224 bytes): Unique VkPipelineCache count: 0
+Pipeline "EB9363C19C999E87" does not exist.
+```
+ 
+This is the same bug reported in this [vkd3d-proton](https://github.com/HansKristian-Work/vkd3d-proton/issues/2918) bug report for Wuthering Waves.
+
+---
 
 ## Fixes Applied
-### Mods
-- [FFVIIHook](https://www.nexusmods.com/finalfantasy7rebirth/mods/4): Allows editing of Engine.ini.
-- [Ultimate Engine Tweaks (UET)](https://www.nexusmods.com/finalfantasy7rebirth/mods/3): A preset for Engine.ini that provides many performance improvements on its own.
-
-Engine.ini location: `~/.steam/steam/steamapps/compatdata/2909400/pfx/drive_c/users/steamuser/Documents/My Games/FINAL FANTASY VII REBIRTH/Saved/Config/WindowsNoEditor/Engine.ini`
+Add `pipeline_library_ignore_mismatch_driver` to your `VKD3D_CONFIG` launch option. This tells VKD3D to ignore the driver version mismatch instead of nuking the cache, allowing pipeline objects to actually accumulate between sessions.
+ 
+With this fix, the cache file is allowed to grow beyond 3MB, up to 459MB in my case. This has improved my game's performance, but to be completely transparent, it is still far from perfect.
 
 ### Steam Config
 #### Launch Options
-`WINEDLLOVERRIDES="d3d9=n,b;dsound=n,b" RADV_PERFTEST=nggc,gpl VKD3D_CONFIG=pipeline_library_app_cache,shader_cache_sync taskset -c 0-15 mangohud gamemoderun %command%`
-- `WINEDLLOVERRIDES="d3d9=n,b` is for the dll that ships with FFVIIHook. By default, it is xinput1_3.dll; but I renamed it to d3d9.dll to remove the conflict with controller input.
-- `WINEDLLOVERRIDES="dsound=n,b` is needed for FF7RebirthFix.
+`SteamDeck=0 RADV_PERFTEST=nggc VKD3D_CONFIG=pipeline_library_app_cache,shader_cache_sync,pipeline_library_ignore_mismatch_driver,nodxr VKD3D_FEATURE_LEVEL=12_2 mangohud gamemoderun %command% -nodirectstorage`
+- `SteamDeck=0` prevents the game from applying its Steam Deck performance profile.
 - `RADV_PERFTEST=nggc` can improve AMD GPU performance in some titles.
-- `RADV_PERFTEST=gpl`
+- `RADV_PERFTEST=gpl` enables Graphics Pipeline Library on RADV for faster pipeline compilation.
 - `VKD3D_CONFIG=pipeline_library_app_cache` enables the persistent caching of compiled shader pipelines.
-- `VKD3D_CONFIG=shader_cache_sync`
-- `taskset -c 0-15` to prevent the game from using the i7-12700K's, slower, E-cores.
+- `VKD3D_CONFIG=shader_cache_sync` ensures shader cache writes are synchronized properly
+- `VKD3D_CONFIG=pipeline_library_ignore_mismatch_driver` prevents VKD3D from nuking the pipeline cache when it detects a driver version mismatch, allowing the cache to accumulate properly between sessions.
+- `VKD3D_CONFIG=nodxr`
+- `VKD3D_FEATURE_LEVEL=12_2`
 - `mangohud` for performance monitoring.
 - `gamemoderun` for general performance improvements.
-- ~~`-nodirectstorage` bypasses DirectStorage and allows Proton to handle asset streaming. This is done because the game ships with an outdated DirectStorage 1.1.1 DLL.~~ Doesn't seem to help and may even be detrimental. I believe SQUARE ENIX released a patch soon after the PC release to address this issue.
+- `-nodirectstorage` bypasses DirectStorage and allows Proton to handle asset streaming. ~~This is done because the game ships with an outdated DirectStorage 1.1.1 DLL.~~ SQUARE ENIX apparently updated the DirectStorage version soon after the game's launch on PC, but it seems that Proton still handles this better without DirectStorage.
 
 #### Proton
-Proton 10.0-4 (Stable)
+GE-Proton10-34
 
 ### In-Game Settings
-If you are still having issues, set "Background Model Detail" to low. This will introduce severe pop-in, but the game should run much smoother. Capping the game to 60fps (or even 30 if you can stomach it) should help further as the game will have more time to render each frame.
+If you are still having issues, set "Background Model Detail" to low. This will introduce severe pop-in, but the game should run much smoother. I have this setting on Medium. Capping the game to 60fps (or even 30 if you can stomach it) should help further as the game will have more time to render each frame.
 
-## Testing
-I am still testing different configurations with several LOD mods. Since the lag seems to be occuring when pop-in occurs, I am trying to see if I can effectively eliminate pop-in, therefore eliminating stutter.
+---
+
+## Final Thoughts
+I have spent more time trying to troubleshoot this game than I would like to admit. At this point, I believe that the problem is pretty far removed from what I am currently capable of. I would encourage anyone reading this to try these fixes, and to also experiment with the various mods out there for this game. I have tried just about every one of them, but with no success. The issue isn't a performance problem, so while many mods improve performance, they do not address what is happening here. I believe the solution to this problem would lie in an update from SQUARE ENIX or possibly a more mature VKD3D.
+
+---
 
 ## Resources
-### Mods
-#### Important
-- [FFVIIHook](https://www.nexusmods.com/finalfantasy7rebirth/mods/4)
-- [FF7RebirthFix](https://www.nexusmods.com/finalfantasy7rebirth/mods/22)
-
-#### Performance
-- [Ultimate Engine Tweaks (UET)](https://www.nexusmods.com/finalfantasy7rebirth/mods/3)
-- [Fantasy Optimizer](https://www.nexusmods.com/finalfantasy7rebirth/mods/1)
-
-#### LOD
-- [LOD Fix - Optimized Clarity](https://www.nexusmods.com/finalfantasy7rebirth/mods/38)
-- [Ultimate Graphics Quality Engine Best LOD FPS and Foliage Fix](https://www.nexusmods.com/finalfantasy7rebirth/mods/397)
-- [7 Rebirth Engine Tweaks](https://www.nexusmods.com/finalfantasy7rebirth/mods/16)
-
-#### Other
-- [FFVII DLSS4-FSR4-XeSS-FrameGen and AVX2 Emulation](https://www.nexusmods.com/finalfantasy7rebirth/mods/15)
-- [FF7 Rebirth DX12 Async Compile](https://www.nexusmods.com/finalfantasy7rebirth/mods/2107)
-
-### Info
 - [FF7Rebirth PC Optimization Repo](https://github.com/Zenardi/ff7rebirth-pc-optimization)
 - [FF7-Rebirth-Optimized-Clarity](https://github.com/marcValdz/FF7-Rebirth-Optimized-Clarity)
+- [VKD3D-Proton Bug Report](https://github.com/HansKristian-Work/vkd3d-proton/issues/2918)
