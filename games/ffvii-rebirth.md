@@ -4,7 +4,10 @@
 The problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
 
 ## VKD3D Pipeline Mismatch
-FFVII Rebirth stores compiled shader pipelines in the file `~/.steam/steam/steamapps/compatdata/2909400/pfx/drive_c/users/steamuser/Documents/My Games/FINAL FANTASY VII REBIRTH/Saved/D3DDriverByteCodeBlob_V4098_D29772_S0_R0.ushaderprecache`
+FFVII Rebirth stores compiled shader pipelines in the file:
+```
+~/.steam/steam/steamapps/compatdata/2909400/pfx/drive_c/users/steamuser/Documents/My Games/FINAL FANTASY VII REBIRTH/Saved/D3DDriverByteCodeBlob_V4098_D29772_S0_R0.ushaderprecache
+```
  
 Under current VKD3D-Proton, this file is created at only 3MB, which is incorrect.
  
@@ -33,7 +36,9 @@ With this fix, the cache file is allowed to grow beyond 3MB, up to 459MB in my c
 
 ### Steam Config
 #### Launch Options
-`SteamDeck=0 RADV_PERFTEST=nggc VKD3D_CONFIG=pipeline_library_app_cache,shader_cache_sync,pipeline_library_ignore_mismatch_driver,nodxr VKD3D_FEATURE_LEVEL=12_2 mangohud gamemoderun %command% -nodirectstorage`
+```
+SteamDeck=0 RADV_PERFTEST=nggc VKD3D_CONFIG=pipeline_library_app_cache,shader_cache_sync,pipeline_library_ignore_mismatch_driver,nodxr VKD3D_FEATURE_LEVEL=12_2 mangohud gamemoderun %command% -nodirectstorage
+```
 - `SteamDeck=0` prevents the game from applying its Steam Deck performance profile.
 - `RADV_PERFTEST=nggc` can improve AMD GPU performance in some titles.
 - `RADV_PERFTEST=gpl` enables Graphics Pipeline Library on RADV for faster pipeline compilation.
