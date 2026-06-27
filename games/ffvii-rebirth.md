@@ -1,12 +1,12 @@
 # FINAL FANTASY VII REBIRTH - Linux Performance Guide
 
 ## System Info
-- **GPU:** AMD Radeon RX 7900 XTX
-- **CPU:** Intel Core i7-12700K
-- **OS:** Linux Mint 22.2 Cinnamon
-- **Kernel:** 6.17.0-35-generic
-- **Mesa:** 26.1.1 (Kisak PPA)
-- **Game Version:** 1.0.0.5
+- **GPU**: AMD Radeon RX 7900 XTX
+- **CPU**: Intel Core i7-12700K
+- **OS**: Linux Mint 22.2 Cinnamon
+- **Kernel**: 6.17.0-35-generic
+- **Mesa**: 26.1.1 (Kisak PPA)
+- **Game Version**: 1.0.0.5
 
 ## Problem
 The problem appears to stem from the fact that SQUARE ENIX uses the proprietary tool "MassiveEnvironment" to render objects within the game. When moving the camera, GPU usage spikes to 100%, resulting in constant freezing, making the game unplayable.
