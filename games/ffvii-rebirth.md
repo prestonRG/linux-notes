@@ -57,6 +57,17 @@ If you are still having issues, set "Background Model Detail" to low. This will 
 ## Final Thoughts
 I have spent more time trying to troubleshoot this game than I would like to admit. At this point, I believe that the problem is pretty far removed from what I am currently capable of. I would encourage anyone reading this to try these fixes, and to also experiment with the various mods out there for this game. I have tried just about every one of them, but with no success. The issue isn't a performance problem, so while many mods improve performance, they do not address what is happening here. I believe the solution to this problem would lie in an update from SQUARE ENIX or possibly a more mature VKD3D.
 
+## New Update
+DX12 Async Shader Compile Mod by Phroster
+
+After troubleshooting Red Dead Redemption 2 for a while, I discovered that enabling Async Compute fixed most of the stutter I was experiencing in that game. I had seen this mod earlier in my testing, but never tried it as the author said it would not work on linux. After fixing RDR2, I decided to look into this mod again.
+
+Steps:
+1. Install the mod [FF7 Rebirth DX12 Async Shader Compile](https://www.nexusmods.com/finalfantasy7rebirth/mods/2107)
+2. Extract the file into the following directory: `~/.steam/steam/steamapps/compatdata/2909400/pfx/drive_c/users/steamuser/Documents/My Games/FINAL FANTASY VII REBIRTH/End/Binaries/Win64/`
+3. Rename the file to d3d11.dll
+4. Add `WINEDLLOVERRIDES="d3d11=n,b"` to the game's launch options
+
 ## Appendix
 ### Game Version
 1.0.0.5
@@ -68,3 +79,4 @@ GE-Proton10-34
 - [FF7Rebirth PC Optimization Repo](https://github.com/Zenardi/ff7rebirth-pc-optimization)
 - [FF7-Rebirth-Optimized-Clarity](https://github.com/marcValdz/FF7-Rebirth-Optimized-Clarity)
 - [VKD3D-Proton Bug Report](https://github.com/HansKristian-Work/vkd3d-proton/issues/2918)
+- [FF7 Rebirth DX12 Async Shader Compile](https://www.nexusmods.com/finalfantasy7rebirth/mods/2107)
