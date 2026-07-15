@@ -33,5 +33,5 @@ Should look like this: `GRUB_CMDLINE_LINUX_DEFAULT="amdgpu.gfxoff=0 amdgpu.runpm
 This is one of the worst issues I have had and was at the point of requesting an RMA for my GPU. Since adding the variables to my grub config, I have not had any more issues with my GPU.
 
 ## Resources
-This repo was vital to finding the fix to my issue. A big thank you to danielrosehill.
+This repo was vital to finding the fix to my issue. A big thank you to [danielrosehill](https://gist.github.com/danielrosehill).
 - [A Dummy's Guide to AMD GPU Issues on Linux](https://gist.github.com/danielrosehill/6a531b079906f160911a87dea50e1507#common-symptoms)
