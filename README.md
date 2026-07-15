@@ -16,6 +16,7 @@ A place to document Linux findings
 
 ### Games
 - [FINAL FANTASY VII REBIRTH](games/ffvii-rebirth.md)
+- [Red Dead Redemption 2](games/red-dead-redemption-2.md)
 - [Resident Evil 6](games/resident-evil-6.md)
 
 ### System
