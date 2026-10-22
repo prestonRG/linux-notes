@@ -1,16 +1,5 @@
 # Linux Notes
-A place to document my Linux findings
-
-## My PC Specs
-- AMD Radeon RX 7900XTX
-- Intel Core i7-12700K
-- Linux Mint Cinnamon
-
-## Gaming Info
-- Gaming on Linux works very well in a majority of cases thanks to Valve's work on Proton. For the most part, the only reason a game won't work is because it uses kernel level anti cheat (KLAC). To see if a game will work or not, due to KLAC, use [Are We Anti-Cheat Yet?](https://areweanticheatyet.com/)
-- For increased stability, I would highly recommend [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom/releases), which adds additional fixes on top of Valve's proton. Simply install your chosen version into `~/.steam/debian-installation/compatibilitytools.d/` and restart steam. Proton-GE should now be available for games under Properties > Compatibility > "Force the use of a specific Steam Play compatibility tool"
-- If you are unsure about something, [ProtonDB](https://www.protondb.com/) is the best resource I know of to check.
-- The only two resources I use to play games are [Steam](https://store.steampowered.com/) and [Heroic Games Launcher](https://heroicgameslauncher.com/).
+This project is a place for me to document my various Linux findings. It is very common that I will fix something on my computer and forget it right away. Documenting my solutions here gives me a head start later on, should I need them again. Many of these pages may be specific to my own device, but I hope that it can be of some use to others as well.
 
 ## Pages
 
@@ -26,5 +15,22 @@ A place to document my Linux findings
 - [AMD RDNA3 GPU Stability](system/amd-gpu-stability.md)
 - [Dual Booting Windows 11](system/dual-booting.md)
 
-## Note
+## README
+- [My PC Specs](#my-pc-specs)
+- [Linux Gaming Info](#linux-gaming-info)
+- [Notes](#notes)
+
+## My PC Specs
+- Distro: Linux Mint Cinnamon
+- Motherboard: MSI MPG Z690 CARBON WIFI
+- CPU: Intel Core i7-12700K
+- GPU: AMD Radeon RX 7900XTX
+
+## Linux Gaming Info
+- Gaming on Linux works very well in a majority of cases thanks to Valve's work on Proton. For the most part, the only reason a game won't work is because it uses kernel level anti cheat (KLAC). To see if a game will work or not, due to KLAC, use [Are We Anti-Cheat Yet?](https://areweanticheatyet.com/)
+- For increased stability, I would highly recommend [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom/releases), which adds additional fixes on top of Valve's proton. Simply install your chosen version into `~/.steam/debian-installation/compatibilitytools.d/` and restart steam. Proton-GE should now be available for games under Properties > Compatibility > "Force the use of a specific Steam Play compatibility tool"
+- If you are unsure about something, [ProtonDB](https://www.protondb.com/) is the best resource I know of to check.
+- The only two resources I use to play games are [Steam](https://store.steampowered.com/) and [Heroic Games Launcher](https://heroicgameslauncher.com/).
+
+## Notes
 AI tools are used to help me with research and documentation. I have thoroughly reviewed and tested all findings on my own device before documenting them, unless stated otherwise.
