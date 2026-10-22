@@ -3,7 +3,7 @@
 ## Global Variables
 For every game i play on steam, at minimum, I use the launch options:
 ```
-mangohud gamemoderun %command%
+gamemoderun mangohud %command%
 ```
 
 ## Inside of %command%
@@ -51,6 +51,6 @@ The Benefit: Prevents "scheduling stutters" caused by the OS moving game threads
 
 ### WINEDLLOVERRIDES
 If using a mod that adds a .dll file, make sure to use WINEDLLOVERRIDES.
-- Example:
+#### Example:
 1. Mod uses dxgi.dll
 2. Add `WINEDLLOVERRIDES=dxgi="n,b" %command%` to launch options

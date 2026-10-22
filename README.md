@@ -1,5 +1,5 @@
-# linux-notes
-A place to document Linux findings
+# Linux Notes
+A place to document my Linux findings
 
 ## My PC Specs
 - AMD Radeon RX 7900XTX
@@ -19,8 +19,12 @@ A place to document Linux findings
 - [Red Dead Redemption 2](games/red-dead-redemption-2.md)
 - [Resident Evil 6](games/resident-evil-6.md)
 
+### Steam
+- [Launch Options](steam/launch-options.md)
+
 ### System
 - [AMD RDNA3 GPU Stability](system/amd-gpu-stability.md)
+- [Dual Booting Windows 11](system/dual-booting.md)
 
 ## Note
 AI tools are used to help me with research and documentation. I have thoroughly reviewed and tested all findings on my own device before documenting them, unless stated otherwise.
