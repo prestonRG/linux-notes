@@ -36,7 +36,7 @@ If you are planning to install Windows on the same drive as Linux, I would recom
 ### From Windows
 1. Disable Windows Fast Startup as this prevents proper shutdown and can cause filesystem corruption on shared drives.
 
-2. Check `Settings > Privacy & Security > Device Encryption`, and save the recovery key somewhere off the machine.
+2. I have seen that turning off BitLocker is advised, but don't believe I have BitLocker on my device. I am running Windows 11 Home, so if you are running a different version, you may want to look into this.
 
 ### Post-Install
 - Run the command `sudo timedatectl set-local-rtc 1` to force Linux to use local time to avoid conflicts with Windows.
