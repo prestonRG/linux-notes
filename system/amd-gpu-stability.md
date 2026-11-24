@@ -19,7 +19,7 @@ I looked all over for fixes. Many sources gave me ideas, but none fixed the issu
 
 ## Current Config
 1. Add these variables to GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub
-- amdgpu.gfxoff=0
+- amdgpu.gfx_off=0
 - amdgpu.runpm=0
 - amdgpu.gpu_recovery=1
 - amdgpu.tmz=0
