@@ -1,6 +1,6 @@
 # Red Dead Redemption 2
 
-## Problem
+## Problem 1
 While the game runs pretty well, it suffers from very small stutters during gameplay. These aren't big enough to ruin the game, but are very annoying, especially throughout a game as big as this one.
 
 ## Fix
@@ -12,6 +12,9 @@ and change the line `<asyncComputeEnabled value="false" />` to `<asyncComputeEna
 
 ## Result
 The stutters should be significantly reduced if not completely gone.
+
+## 2
+Set Global Illumination Quality to Ultra to avoid sudden lighting glitches.
 
 ## Resources
 - https://www.youtube.com/watch?v=-pRTweQp2uw&t=954s
