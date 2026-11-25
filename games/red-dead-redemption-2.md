@@ -10,9 +10,6 @@ Open the following file in your prefered editor
 ```
 and change the line `<asyncComputeEnabled value="false" />` to `<asyncComputeEnabled value="true" />`
 
-### Result
-The stutters should be significantly reduced if not completely gone.
-
 ## Fix various lighting and graphical glitches
 Set Global Illumination Quality to Ultra to avoid sudden lighting glitches.
 Also, set the game's grahpics API to Vulkan, not DirectX 12.
