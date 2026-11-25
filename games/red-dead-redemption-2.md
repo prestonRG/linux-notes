@@ -6,7 +6,7 @@ While the game runs pretty well, it suffers from very small stutters during game
 ## Fix
 Open the following file in your prefered editor
 ```
-/mnt/1cc5a8bd-d0fc-48ff-87fd-f548aa872948/SteamLibrary/steamapps/compatdata/1174180/pfx/drive_c/users/steamuser/Documents/Rockstar Games/Red Dead Redemption 2/Settings/system.xml
+~/.steam/steam/steamapps/compatdata/1174180/pfx/drive_c/users/steamuser/Documents/Rockstar Games/Red Dead Redemption 2/Settings/system.xml
 ```
 and change the line `<asyncComputeEnabled value="false" />` to `<asyncComputeEnabled value="true" />`
 
