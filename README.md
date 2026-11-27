@@ -15,6 +15,7 @@ This project is a place for me to document my various Linux findings. It is very
 - [AMD RDNA3 GPU Stability](system/amd-gpu-stability.md)
 - [Dual Booting Windows 11](system/dual-booting.md)
 - [Gamemode Issue](system/gamemode.md)
+- [Peripherals](system/peripherals.md)
 
 ## README
 - [My PC Specs](#my-pc-specs)
